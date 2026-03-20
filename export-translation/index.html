@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>SST Export Translation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>SST Export Translation</h1>
+
+    <form id="export-form">
+      <div class="form-group">
+        <label for="template">Template:</label>
+        <select id="template" name="template">
+          <option value="FD" selected>FD</option>
+          <option value="ACE">ACE</option>
+          <option value="AGPD">AGPD</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="inputFile">Input File:</label>
+        <div class="file-input-wrapper">
+          <input
+            type="text"
+            id="inputFile"
+            placeholder="No file selected"
+            readonly
+          />
+          <button type="button" class="secondary" id="selectFileBtn">
+            Browse
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="destination">Destination:</label>
+        <div class="file-input-wrapper">
+          <input
+            type="text"
+            id="destination"
+            placeholder="No destination selected"
+            readonly
+          />
+          <button type="button" class="secondary" id="selectDestBtn">
+            Browse
+          </button>
+          <button type="button" class="secondary" id="clearDestBtn">
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" class="export-btn">Export to locales</button>
+    </form>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

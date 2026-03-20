@@ -1,0 +1,83 @@
+{
+  "name": "sst-export-translation",
+  "version": "1.0.0",
+  "description": "Export the data from excel file to json",
+  "main": "main.js",
+  "repository": "git@github.com:AQuoc98/sst-export-translation.git",
+  "author": "Ken",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.ken.sst-export-translation",
+    "productName": "SST Export Translation",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "export-translation-to-json.js",
+      "node_modules/**/*",
+      "!node_modules/**/*.md",
+      "!node_modules/**/*.ts",
+      "!node_modules/**/LICENSE*",
+      "!node_modules/**/CHANGELOG*",
+      "!node_modules/**/{README,readme}*",
+      "!node_modules/**/{test,tests,__tests__,example,examples}/**/*",
+      "!node_modules/**/*.{map,d.ts}",
+      "!node_modules/.bin",
+      "!**/{.DS_Store,.git,.gitignore,.gitattributes}"
+    ],
+    "asarUnpack": [],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.utilities",
+      "icon": "build/icon.icns"
+    },
+    "dmg": {
+      "title": "${productName} ${version}",
+      "icon": "build/icon.icns",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
+    "compression": "maximum",
+    "removePackageScripts": true,
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    }
+  },
+  "devDependencies": {
+    "electron": "^39.2.4",
+    "electron-builder": "^26.0.12",
+    "prettier": "3.7.1"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
