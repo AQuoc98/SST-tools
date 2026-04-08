@@ -46,6 +46,7 @@ npm run build
    - <lang>/eula.json
 
 Destination behavior:
+
 - The selected destination folder handle is saved in IndexedDB and reused after reload in supported browsers.
 - The folder label is also saved in localStorage for fallback display.
 - Browser permission prompts may still appear on export if access needs to be re-granted.

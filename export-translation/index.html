@@ -1,52 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SST Export Translation (Web)</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <h1>SST Export Translation</h1>
-      <p class="subtitle">Browser edition: parse Excel and write locale JSON directly to your selected folder.</p>
 
-      <form id="export-form" novalidate>
-        <div class="form-group">
-          <label for="template">Template</label>
-          <select id="template" name="template">
-            <option value="FD" selected>FD</option>
-            <option value="ACE">ACE</option>
-            <option value="AGPD">AGPD</option>
-          </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SST Export Translation (Web)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="app-shell">
+    <h1>SST Export Translation</h1>
+    <p class="subtitle">
+      Browser edition: parse Excel and write locale JSON directly to your
+      selected folder.
+    </p>
+
+    <form id="export-form" novalidate>
+      <div class="form-group">
+        <label for="template">Template</label>
+        <select id="template" name="template">
+          <option value="FD" selected>FD</option>
+          <option value="ACE">ACE</option>
+          <option value="AGPD">AGPD</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="inputFile">Input File (.xlsx/.xls)</label>
+        <input type="file" id="inputFile" name="inputFile" accept=".xlsx,.xls" />
+      </div>
+
+      <div class="form-group">
+        <label for="destination">Destination Folder</label>
+        <div class="file-input-wrapper">
+          <input type="text" id="destination" name="destination" placeholder="No destination selected" readonly />
+          <button type="button" class="secondary" id="selectDestBtn">
+            Browse
+          </button>
+          <button type="button" class="secondary" id="clearDestBtn">
+            Clear
+          </button>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="inputFile">Input File (.xlsx/.xls)</label>
-          <input type="file" id="inputFile" name="inputFile" accept=".xlsx,.xls" />
-        </div>
+      <button type="submit" class="export-btn" id="exportBtn">
+        Export to destination folder
+      </button>
+    </form>
 
-        <div class="form-group">
-          <label for="destination">Destination Folder</label>
-          <div class="file-input-wrapper">
-            <input
-              type="text"
-              id="destination"
-              name="destination"
-              placeholder="No destination selected"
-              readonly
-            />
-            <button type="button" class="secondary" id="selectDestBtn">Browse</button>
-            <button type="button" class="secondary" id="clearDestBtn">Clear</button>
-          </div>
-        </div>
+    <section id="status" class="status" aria-live="polite"></section>
+  </main>
 
-        <button type="submit" class="export-btn" id="exportBtn">Export to destination folder</button>
-      </form>
+  <script type="module" src="app.js"></script>
+</body>
 
-      <section id="status" class="status" aria-live="polite"></section>
-    </main>
-
-    <script type="module" src="app.js"></script>
-  </body>
 </html>
