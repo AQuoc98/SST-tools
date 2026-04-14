@@ -8,10 +8,23 @@ const TRANSLATION_COL_END = 10; // Column K
 const EULA_COL_START = 14; // Column O
 const EULA_COL_END = 23; // Column X
 
+const LANG_FOLDER_MAP = {
+  english: "en",
+  italian: "it",
+  french: "fr",
+  swedish: "sv",
+  finnish: "fi",
+  norwegian: "no",
+  polish: "pl",
+  german: "de",
+  danish: "da",
+  spanish: "es",
+};
+
 function normalizeLangFolder(lang) {
   if (!lang) return "";
   const lowered = String(lang).trim().toLowerCase();
-  return lowered === "italian" ? "ita" : lowered.substring(0, 2);
+  return LANG_FOLDER_MAP[lowered] || lowered.substring(0, 2);
 }
 
 function parseLine(rawValue) {
