@@ -1,0 +1,22 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:4567",
+    "ANTHROPIC_AUTH_TOKEN": "dummy",
+    "ANTHROPIC_API_KEY": "dummy",
+    "ANTHROPIC_MODEL": "claude-opus-4-7",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-opus-4-7",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-7",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-opus-4-7"
+  },
+  "__aiProxy": {
+    "managedEnvKeys": [
+      "ANTHROPIC_BASE_URL",
+      "ANTHROPIC_AUTH_TOKEN",
+      "ANTHROPIC_API_KEY",
+      "ANTHROPIC_MODEL",
+      "ANTHROPIC_DEFAULT_SONNET_MODEL",
+      "ANTHROPIC_DEFAULT_OPUS_MODEL",
+      "ANTHROPIC_DEFAULT_HAIKU_MODEL"
+    ]
+  }
+}

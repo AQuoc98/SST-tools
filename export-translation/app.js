@@ -1,5 +1,6 @@
 import { exportFD } from "./templates/fd.js";
 import { exportACE } from "./templates/ace.js";
+import { exportHS } from "./templates/hs.js";
 
 const exportForm = document.getElementById("export-form");
 const templateSelect = document.getElementById("template");
@@ -11,7 +12,7 @@ const exportBtn = document.getElementById("exportBtn");
 const statusEl = document.getElementById("status");
 
 const MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024;
-const FILE_NAME_PATTERN = /\.(xlsx|xls)$/i;
+const FILE_NAME_PATTERN = /\.(xlsx|xls|csv)$/i;
 const DESTINATION_LABEL_PREFIX = "savedDestinationLabel_";
 const DESTINATION_DB_NAME = "exportTranslationDb";
 const DESTINATION_DB_VERSION = 1;
@@ -107,6 +108,8 @@ async function exportTranslation(file, template, destinationHandle) {
       return exportFD(file, destinationHandle);
     case "ACE":
       return exportACE(file, destinationHandle);
+    case "HS":
+      return exportHS(file, destinationHandle);
     case "AGPD":
       return { success: false, message: "AGPD template not yet implemented" };
     default:
@@ -208,7 +211,7 @@ exportForm.addEventListener("submit", async (event) => {
   }
 
   if (!FILE_NAME_PATTERN.test(file.name)) {
-    setStatus("Please select a valid .xlsx or .xls file", "error");
+    setStatus("Please select a valid .xlsx, .xls or .csv file", "error");
     return;
   }
 

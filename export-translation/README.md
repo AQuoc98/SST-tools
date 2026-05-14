@@ -4,8 +4,8 @@ A browser-based HTML, CSS, and JavaScript app that reads a structured Excel work
 
 ## Scope
 
-- Implemented: FD template export flow
-- Not implemented: ACE and AGPD templates (placeholder behavior)
+- Implemented: FD, ACE, and HS template export flows
+- Not implemented: AGPD template (placeholder behavior)
 
 ## Tech Stack
 
@@ -35,9 +35,10 @@ npm run build
 
 1. Select template:
    - FD (working)
-   - ACE (not implemented)
+   - ACE (working)
+   - HS (working)
    - AGPD (not implemented)
-2. Choose an input workbook (.xlsx or .xls).
+2. Choose an input workbook (.xlsx, .xls, or .csv).
 3. Select a destination folder.
 4. Click export.
 5. JSON files are written directly to that folder.
@@ -54,7 +55,7 @@ Destination behavior:
 ## Parsing Rules (FD)
 
 - Worksheet name: json_tranlsation
-- Important: the worksheet name intentionally uses the original typo and must match exactly.
+- Important: the worksheet name intentionally uses the original typo and must match exactly. For CSV inputs (which have no sheet names), the first sheet is used as a fallback.
 - Header row: Excel row 2
 - Translation columns: B..J
 - EULA columns: N..V
@@ -63,6 +64,26 @@ Destination behavior:
 - Language folder mapping:
   - italian -> ita
   - all other languages -> first two lowercase characters
+
+## Parsing Rules (ACE)
+
+- Worksheet name: json_tranlsation (falls back to first sheet for CSV)
+- Header row: Excel row 2
+- Translation columns: B..K
+- EULA columns: O..X
+- Data rows start at Excel row 3
+- Cell format: "key": "value"
+- Language folder mapping uses an explicit map (english -> en, italian -> it, french -> fr, swedish -> sv, finnish -> fi, norwegian -> no, polish -> pl, german -> de, danish -> da, spanish -> es); unknown languages fall back to the first two lowercase characters.
+
+## Parsing Rules (HS)
+
+- Worksheet name: json_tranlsation (falls back to first sheet for CSV)
+- Header row: Excel row 2
+- Translation column: B only
+- EULA column: N only
+- Data rows start at Excel row 3
+- Cell format: "key": "value"
+- Output is written to a single `en/` folder (translation.json and eula.json).
 
 ## Browser Adaptation Note
 

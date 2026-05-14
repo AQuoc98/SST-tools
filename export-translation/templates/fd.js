@@ -80,7 +80,9 @@ function populateRange(sheet, range, headerRow, targetData, startCol, endCol) {
 }
 
 function buildExportData(workbook) {
-  const sheet = workbook.Sheets[SHEET_NAME];
+  const sheet =
+    workbook.Sheets[SHEET_NAME] ||
+    workbook.Sheets[workbook.SheetNames[0]];
   if (!sheet) {
     throw new Error(`Sheet "${SHEET_NAME}" not found`);
   }
